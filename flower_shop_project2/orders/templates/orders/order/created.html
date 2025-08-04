@@ -1,0 +1,17 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+
+{% block title %}
+  {% trans "Спасибо" %}
+{% endblock %}
+
+{% block content %}
+  <h1>{% trans "Спасибо" %}</h1>
+  
+  <p>
+    {% blocktrans with order_id=order.id %}
+      Ваш заказ был успешно оформлен. Номер вашего заказа <strong>{{ order_id }}</strong>.
+    {% endblocktrans %}
+  </p>
+  
+{% endblock %}

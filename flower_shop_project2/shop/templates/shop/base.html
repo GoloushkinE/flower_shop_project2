@@ -1,0 +1,132 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% trans 'Мой Цветочный Магазин - свежие цветы и букеты с доставкой' %}">
+    
+    <!-- Optimized: Performance and SEO meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#BC6C25">
+    
+    <title>{% block title %}{% trans "Мой Цветочный Магазин" %}{% endblock %}</title>
+    
+    <!-- Optimized: Remove external font loading for better performance -->
+    <!-- Fonts are now handled via system fonts in CSS -->
+    
+    <!-- Optimized: Preload critical CSS -->
+    <link rel="preload" href="{% static "css/style.css" %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{% static "css/style.css" %}"></noscript>
+    
+    <!-- Optimized: Add DNS prefetch for better performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+</head>
+
+<body>
+    <header id="header">
+        <a href="/" class="logo">{% trans "Мой Цветочный Магазин" %}</a>
+        
+        <div class="header-right">
+            <div class="cart">
+                {% with total_items=cart|length %}
+                    {% if total_items > 0 %}
+                      <a href="{% url "cart:cart_detail" %}">
+                          {# --- ИСПРАВЛЕННЫЙ БЛОК --- #}
+                          {% blocktrans trimmed count count=total_items %}
+                              Корзина: {{ count }} товар
+                          {% plural %}
+                              Корзина: {{ count }} товаров
+                          {% endblocktrans %}
+                          ({{ cart.get_total_price_after_discount|floatformat:"2" }} ₽)
+                      </a>
+                    {% else %}
+                        <a href="{% url "cart:cart_detail" %}">{% trans "Корзина пуста" %}</a>
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <div class="languages">
+                <ul>
+                    {# Загружаем наши кастомные теги #}
+                    {% load i18n_tags %} 
+                    
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <li>
+                            <form action="{% url 'set_language' %}" method="post">
+                                {% csrf_token %}
+                                
+                                {# Вызов тега стал проще. Контекст передается автоматически. #}
+                                <input name="next" type="hidden" value="{% translated_url language.code %}">
+                                
+                                <input name="language" type="hidden" value="{{ language.code }}">
+                                <button type="submit" {% if language.code == LANGUAGE_CODE %}class="selected"{% endif %}>
+                                    {{ language.name_local }}
+                                </button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li class="{{ message.tags }}">
+            {{ message }}
+            <span class="close-message">✖</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <div id="content" class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Optimized: Move JavaScript to bottom and optimize -->
+    <script>
+      // Optimized: Use more efficient event handling and modern JavaScript
+      document.addEventListener('DOMContentLoaded', function() {
+        // Close message functionality with event delegation
+        document.addEventListener('click', function(e) {
+          if (e.target.classList.contains('close-message')) {
+            const message = e.target.parentElement;
+            message.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            message.style.opacity = '0';
+            message.style.transform = 'translateY(-10px)';
+            
+            setTimeout(() => {
+              message.remove();
+            }, 300);
+          }
+        });
+        
+        // Optimized: Add intersection observer for lazy loading if needed
+        if ('IntersectionObserver' in window) {
+          const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                  img.src = img.dataset.src;
+                  img.removeAttribute('data-src');
+                  observer.unobserve(img);
+                }
+              }
+            });
+          });
+          
+          // Observe all images with data-src attribute
+          document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+          });
+        }
+      });
+    </script>
+</body>
+</html>
