@@ -1,0 +1,53 @@
+{% extends "shop/base.html" %}
+{% load i18n static %}
+
+{% block title %}
+  {% if category %}{{ category.name }}{% else %}{% trans "Каталог Цветов" %}{% endif %}
+{% endblock %}
+
+{% block content %}
+  <div id="sidebar">
+    <h3>{% trans "Категории" %}</h3>
+    <ul>
+      <li {% if not category %}class="selected"{% endif %}>
+        <a href="{% url "shop:product_list" %}">{% trans "Все букеты" %}</a>
+      </li>
+      {% for c in categories %}
+        <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+          <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div id="main" class="product-list">
+    <h1>{% if category %}{{ category.name }}{% else %}{% trans "Наши самые свежие цветы" %}{% endif %}</h1>
+    
+    {% for product in products %}
+      <div class="item">
+        <a href="{{ product.get_absolute_url }}">
+          <!-- Optimized: Add lazy loading and proper image attributes -->
+          {% if product.image_thumbnail %}
+            <img src="{% static 'img/placeholder.svg' %}" 
+                 data-src="{{ product.image_thumbnail.url }}" 
+                 alt="{{ product.name }}"
+                 loading="lazy"
+                 width="300" 
+                 height="250">
+          {% else %}
+            <img src="{% static 'img/no_image.png' %}" 
+                 alt="{% trans 'Изображение недоступно' %}"
+                 width="300" 
+                 height="250">
+          {% endif %}
+        </a>
+        <a href="{{ product.get_absolute_url }}" class="product-name">{{ product.name }}</a>
+        <p class="price">{{ product.price }} ₽</p>
+      </div>
+    {% empty %}
+      <div class="no-products">
+        <p>{% trans "В данной категории пока нет товаров." %}</p>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

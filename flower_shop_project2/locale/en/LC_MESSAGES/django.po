@@ -1,0 +1,242 @@
+# English translations for a Django project.
+# Copyright (C) 2025 Your Name
+# This file is distributed under the same license as the flower_shop_project package.
+# Your Name <your.email@example.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: flower_shop_project 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-18 13:26+0300\n"
+"PO-Revision-Date: 2025-07-18 13:30+0300\n"
+"Last-Translator: Gemini Assistant <no-reply@google.com>\n"
+"Language-Team: English <en@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\cart\forms.py:10 .\cart\templates\cart\detail.html:15
+msgid "Количество"
+msgstr "Quantity"
+
+#: .\cart\templates\cart\detail.html:5 .\cart\templates\cart\detail.html:10
+msgid "Ваша корзина"
+msgstr "Your Cart"
+
+#: .\cart\templates\cart\detail.html:14
+msgid "Товар"
+msgstr "Product"
+
+#: .\cart\templates\cart\detail.html:16
+msgid "Цена за шт."
+msgstr "Unit price"
+
+#: .\cart\templates\cart\detail.html:17
+msgid "Общая цена"
+msgstr "Total price"
+
+#: .\cart\templates\cart\detail.html:53
+#: .\orders\templates\orders\order\create.html:26
+msgid "Промежуточный итог"
+msgstr "Subtotal"
+
+#: .\cart\templates\cart\detail.html:59
+#, python-format
+msgid "Промокод \"%(code)s\" (%(discount)s%% скидка)"
+msgstr "Coupon \"%(code)s\" (%(discount)s%% off)"
+
+#: .\cart\templates\cart\detail.html:63
+msgid "Удалить"
+msgstr "Remove"
+
+#: .\cart\templates\cart\detail.html:72
+msgid "Итог"
+msgstr "Total"
+
+#: .\cart\templates\cart\detail.html:81
+msgid "Применить промокод"
+msgstr "Apply coupon"
+
+#: .\cart\templates\cart\detail.html:85
+msgid "Применить"
+msgstr "Apply"
+
+#: .\cart\templates\cart\detail.html:89
+msgid "Продолжить покупки"
+msgstr "Continue shopping"
+
+#: .\cart\templates\cart\detail.html:90
+msgid "Оформить заказ"
+msgstr "Checkout"
+
+#: .\coupons\forms.py:5 .\orders\templates\orders\order\create.html:30
+msgid "Промокод"
+msgstr "Coupon"
+
+#: .\coupons\models.py:6
+msgid "Код"
+msgstr "Code"
+
+#: .\coupons\models.py:7
+msgid "Действителен с"
+msgstr "Valid from"
+
+#: .\coupons\models.py:8
+msgid "Действителен до"
+msgstr "Valid to"
+
+#: .\coupons\models.py:10
+msgid "Скидка (%)"
+msgstr "Discount (%)"
+
+#: .\coupons\models.py:13
+msgid "Активен"
+msgstr "Active"
+
+#: .\coupons\views.py:21
+msgid "Промокод успешно применен."
+msgstr "Coupon applied successfully."
+
+#: .\coupons\views.py:24
+msgid "Такого промокода не существует или он недействителен."
+msgstr "This coupon does not exist or is invalid."
+
+#: .\coupons\views.py:36
+msgid "Промокод был удален."
+msgstr "Coupon has been removed."
+
+#: .\myproject\settings.py:136
+msgid "Русский"
+msgstr "Russian"
+
+#: .\myproject\settings.py:137
+msgid "Английский"
+msgstr "English"
+
+#: .\orders\models.py:10
+msgid "Имя"
+msgstr "First name"
+
+#: .\orders\models.py:11
+msgid "Фамилия"
+msgstr "Last name"
+
+#: .\orders\models.py:12
+msgid "Email"
+msgstr "Email"
+
+#: .\orders\models.py:13
+msgid "Адрес"
+msgstr "Address"
+
+#: .\orders\models.py:14
+msgid "Почтовый индекс"
+msgstr "Postal code"
+
+#: .\orders\models.py:15
+msgid "Город"
+msgstr "City"
+
+#: .\orders\templates\orders\order\create.html:5
+#: .\orders\templates\orders\order\create.html:10
+msgid "Оформление заказа"
+msgstr "Checkout"
+
+#: .\orders\templates\orders\order\create.html:14
+msgid "Ваш заказ"
+msgstr "Your order"
+
+#: .\orders\templates\orders\order\create.html:35
+msgid "Всего:"
+msgstr "Total:"
+
+#: .\orders\templates\orders\order\create.html:40
+msgid "Заказать"
+msgstr "Place order"
+
+#: .\orders\templates\orders\order\created.html:5
+#: .\orders\templates\orders\order\created.html:9
+msgid "Спасибо"
+msgstr "Thank you"
+
+#: .\orders\templates\orders\order\created.html:10
+#, python-format
+msgid ""
+"Ваш заказ был успешно оформлен. Номер вашего заказа <strong>%(order.id)s</"
+"strong>."
+msgstr ""
+"Your order has been successfully placed. Your order number is "
+"<strong>%(order.id)s</strong>."
+
+#: .\shop\models.py:10
+msgid "Название категории"
+msgstr "Category name"
+
+#: .\shop\models.py:11 .\shop\models.py:28
+msgid "Слаг"
+msgstr "Slug"
+
+#: .\shop\models.py:27
+msgid "Название товара"
+msgstr "Product name"
+
+#: .\shop\models.py:29 .\shop\templates\shop\product\detail.html:26
+msgid "Описание"
+msgstr "Description"
+
+#: .\shop\models.py:35
+msgid "Категория"
+msgstr "Category"
+
+#: .\shop\models.py:36
+msgid "Изображение"
+msgstr "Image"
+
+#: .\shop\models.py:42
+msgid "Цена"
+msgstr "Price"
+
+#: .\shop\models.py:43
+msgid "Запас (шт.)"
+msgstr "Stock (pcs.)"
+
+#: .\shop\models.py:44
+msgid "В наличии"
+msgstr "Available"
+
+#: .\shop\templates\shop\base.html:6 .\shop\templates\shop\base.html:15
+msgid "Мой Цветочный Магазин"
+msgstr "My Flower Shop"
+
+#: .\shop\templates\shop\base.html:31
+msgid "Корзина пуста"
+msgstr "Your cart is empty"
+
+#: .\shop\templates\shop\product\detail.html:22
+msgid "Добавить в корзину"
+msgstr "Add to cart"
+
+#: .\shop\templates\shop\product\list.html:5
+msgid "Каталог Цветов"
+msgstr "Flower Catalog"
+
+#: .\shop\templates\shop\product\list.html:10
+msgid "Категории"
+msgstr "Categories"
+
+#: .\shop\templates\shop\product\list.html:13
+msgid "Все букеты"
+msgstr "All bouquets"
+
+#: .\shop\templates\shop\product\list.html:24
+msgid "Наши самые свежие цветы"
+msgstr "Our freshest flowers"
+
+#: .\shop\templates\shop\base.html:23
+#, python-format
+msgid "Корзина: %(count)s товар"
+msgid_plural "Корзина: %(count)s товаров"
+msgstr[0] "Cart: %(count)s item"
+msgstr[1] "Cart: %(count)s items"
